@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#081324">
+  <meta name="description" content="Hero Tycoon — 3D игра: 12 баз, герои, улучшения и сражения с ботами. Запускается сразу на GitHub Pages.">
+  <title>Hero Tycoon — 3D битва баз</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="world" aria-label="Трёхмерный игровой мир"></canvas>
+  <div id="vignette"></div>
+  <div id="overlay" class="menu">
+    <div class="menu-box">
+      <div class="eyebrow"><span class="online-dot"></span> 3D HERO WORLD <span class="subtag">BROWSER EDITION</span></div>
+      <h1>HERO <span>TYCOON</span></h1>
+      <p class="intro">Строй свою супербазу. Получай монеты. Прокачивай героя. Захватывай энергию арены и сражайся с 11 соперниками!</p>
+      <div class="features"><span>◈ 12 баз</span><span>⚡ 12 героев</span><span>◆ 3D мир</span><span>✓ Без установки</span></div>
+      <div class="section-caption"><span>ВЫБЕРИ СВОЕГО ГЕРОЯ</span><span id="selectedText">01 / 12</span></div>
+      <div id="heroGrid" class="hero-grid"></div>
+      <div class="selected-hero"><div id="heroPortrait" class="hero-portrait">⚡</div><div><div id="heroTitle">Неоновый Рыцарь</div><small id="heroDesc">Импульсный меч · сбалансированные способности</small></div></div>
+      <button id="start" class="start"><span>▶</span> НАЧАТЬ ИГРУ <span class="small-arrow">↗</span></button>
+      <div class="footnote">Одиночная версия: 11 соперников управляются ботами. Прогресс сохраняется в браузере.</div>
+    </div>
+    <div class="menu-ambient ambient1"></div><div class="menu-ambient ambient2"></div>
+  </div>
+
+  <div id="gameUI" class="hidden">
+    <header class="topbar">
+      <div class="brand"><b>HERO<span>TYCOON</span></b><small>БАЗА №01 · <span id="heroLabel">НЕОНОВЫЙ РЫЦАРЬ</span></small></div>
+      <div class="resources">
+        <div class="resource"><span class="resource-icon gold">◆</span><div><b id="coins">180</b><small>МОНЕТЫ</small></div></div>
+        <div class="resource"><span class="resource-icon aqua">↗</span><div><b id="income">+12/с</b><small>ДОХОД</small></div></div>
+        <div class="resource level"><span class="resource-icon purple">✦</span><div><b id="baseLvl">1</b><small>УРОВЕНЬ БАЗЫ</small></div></div>
+      </div>
+      <button id="menuBtn" class="icon-btn" aria-label="Меню и пауза" title="Пауза (Esc)">☰</button>
+    </header>
+    <div class="health-panel"><div class="health-title"><span>◆ ЗДОРОВЬЕ ГЕРОЯ</span><b id="hpTxt">100/100</b></div><div class="health-line"><div id="hpFill"></div></div><div id="arenaLabel" class="arena-label">◆ ЦЕНТРАЛЬНЫЙ КРИСТАЛЛ — СВОБОДЕН</div></div>
+    <div class="right-widgets">
+      <div class="map-shell"><div class="mini-header"><b>КАРТА АРЕНЫ</b><span>12 БАЗ</span></div><canvas id="minimap" width="228" height="228"></canvas><div class="mini-footer">● ВЫ <span>● СОПЕРНИКИ</span></div></div>
+      <div class="quest"><div class="quest-heading">✧ ЦЕЛИ ГЕРОЯ</div><div id="quest1">↗ Улучши свою базу</div><div id="quest2">⚔ Победи соперника</div><div id="quest3">◆ Захвати центр арены</div></div>
+    </div>
+    <div class="bottom-left"><div class="keys-help">W A S D <span>ДВИЖЕНИЕ</span> · МЫШЬ <span>КАМЕРА</span><br>ПРОБЕЛ <span>АТАКА</span> · Q <span>СПОСОБНОСТЬ</span> · E <span>АПГРЕЙД</span></div><div class="game-stats">⚔ <span id="kills">0</span> ПОБЕД &nbsp;·&nbsp; ✦ <span id="raids">0</span> РЕЙДОВ</div></div>
+    <div class="controls"><button id="upgradeBtn" class="control-btn upgrade"><span class="btn-icon">⬆</span><span class="btn-copy"><b>УЛУЧШИТЬ БАЗУ</b><small id="upgradePrice">◆ 100 монет · E</small></span></button><button id="skillBtn" class="control-btn skill"><span class="btn-icon">✦</span><span class="btn-copy"><b>СУПЕРСИЛА</b><small id="skillCooldown">ГОТОВО · Q</small></span></button><button id="attackBtn" class="control-btn attack"><span class="btn-icon">⚔</span><span class="btn-copy"><b>АТАКА</b><small>ПРОБЕЛ</small></span></button></div>
+    <div id="joystick" class="joystick"><div class="stick" id="stick"></div></div>
+    <div id="toast" class="toast"></div>
+    <div class="center-crosshair">+</div>
+  </div>
+
+  <div id="pause" class="pause hidden"><div class="pause-panel"><div class="eyebrow">ИГРА НА ПАУЗЕ</div><h2>HERO <span>TYCOON</span></h2><p>Прогресс автоматически сохранён на этом устройстве.</p><button id="resumeBtn" class="start">▶ ПРОДОЛЖИТЬ</button><button id="restartBtn" class="secondary">↻ НОВАЯ ИГРА</button><p class="footnote">WASD — движение · мышь — камера · пробел — атака · Q — суперсила · E — улучшение</p></div></div>
+  <div id="err" class="error hidden"></div>
+  <script src="game.js" defer></script>
+</body>
+</html>
